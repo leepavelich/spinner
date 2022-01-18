@@ -1,6 +1,5 @@
 const animations = ['|', '/', '-', '\\'];  // spinner animation frames
-
-let delay = 100;
+const delay = 100;
 
 const rotate = (counter, callback) => {
   setTimeout(() => {
