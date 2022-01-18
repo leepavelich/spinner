@@ -1,8 +1,13 @@
-const animations = ['|', '/', '-', '\\']  // spinner animation frames
-const FULL_REVS = 1;  // number of full revolutions to animate
-for (let i = 0; i < 2 * FULL_REVS * animations.length + 1; i++) {
+const frames = ['|', '/', '-', '\\'];  // spinner animation frames
+const delay = 100;
+
+const rotate = (frame, stopFrame = Infinity) => {
+  if (frame >= stopFrame) return;
   setTimeout(() => {
-    process.stdout.write(`\r${animations[i % animations.length]}   `);
-  }, 100 + i * 200);
-}
-setTimeout(() => console.log(), 100 + (2 * FULL_REVS * animations.length + 1) * 200);
+    process.stdout.write(`\r${frames[frame % frames.length]}   `);
+    rotate(++frame, stopFrame);
+  }, delay);
+};
+
+rotate(0);
+// rotate(0, 8);
